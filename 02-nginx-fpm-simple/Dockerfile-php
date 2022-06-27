@@ -1,0 +1,2 @@
+FROM php:fpm
+COPY ./src /code

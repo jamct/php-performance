@@ -1,0 +1,8 @@
+FROM php:fpm-alpine
+RUN apk add git
+COPY ./src /code
+RUN chown -R www-data /code/storage
+RUN chmod -R 660 /code/storage
+WORKDIR /code
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN composer install
